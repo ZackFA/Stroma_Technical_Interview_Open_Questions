@@ -1,0 +1,99 @@
+I will be anwering the questions issued by Stroma Vision for the tehcnical review for the Embedded Software Engineer poisition.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1-) When is it preferred to use STM32 over Arduino, ESP32, PIC or other comparable embedded system?
+
+- I will be answering this question firstly by explaining why should any other embedded system or microcontroller be preffered over arduino in any 
+professional field project. First off, software wise, Arduino is very beginner friendly and has a very easy syntax. Making it relatively easy to get 
+started at the field of embedded systems developping (hardware & software). Arduino has already numerous built in libraries, making it simple to use,
+yet allowing it to be perfoming very poorly on more complicated actions and functions. Arduino's aim and goal is slightly different than other MCU's
+or embedded systems. Arduino is mostly the go for choice for hobbyists and individuals aiming for DIY projects, while any other MCU are used for the
+development and manufacturing of different products. So if you are a person who wants to learn the basics of MCU & Embedded systems (Memory, Clock, Peripherals, etc)
+and how to interface them with various electronic modules, Arduino is the go for you.
+
+Now when it comes to choosing STM32 over any other MCU or Embedded systems, it can get very detail specific. STM32 has a range of differnet built in ARM
+Cortex M0, M3, M7F etc. and each of them provide different performance or properties. In the real world, when designing any product we have to specify 
+our aims and criterias. Do we need the system to run fast? does it need to have a big memory? how many modules will be integrated? can the MCU handle
+several communication perihperals? how effecient are the peripherals? etc. We have to answer a lot of questions in order to specify which MCU we need.
+STM32 already have A LOT of MCU dev boards that offer different technical properties, from clock speeds to high, low memory to higher and etc. There will
+be situtations where we will have to choose some STM32 MCU over other STM32 MCU, let alone preferring it over PIC, ESP32 etc..
+For example comparing STM32F103 with ATMEGA328 we can spot some differences :
+-> STM32F103 has 2 I2C busses vs 1 bus for ATMEGA328
+-> STM32F103 has 2 SPI busses vs 1 bus for ATMEGA328
+-> STM32F103 has 10 analog channels vs 8 channels for ATMEGA328
+-> STM32F103 has 13 PWM channels vs 6 channels for ATMEGA328
+-> STM32F103 has 20 KB RAM memory vs 2 KB RAM memory for ATMEGA328
+We can see that STM32F103 is always much better than ATMEGA328 and specially for large scale projects, and by the way ATMEGA328 is the MCU which sits on
+Arduino. But the same logic can be applied comparing STM32 over any other MCU. Some may have more SPI busses or I2C, some may have better flash memory
+or ram and the list goes on...
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2-) What are the main features of Real-Time Operating Systems and how do they differ from regular OS's?
+
+I will be answering this question by giving a brief explanation about RTOS, what are there members, properties etc. then I will be doing a table
+of comparison between General Purpose OS's and RTOS's to be able to easily understand the differences between them
+
+Ok, first off, in very short and clear words, lets explain what an OS is. An Operating System 'OS' is a system software that administrate computer
+hardware, software resources and provides common function for computer programs. Operating systems can be found on a wide range of computer based devices
+from cellular phones and video game consoles to webservers and supercomputers. Now, what is an RTOS or a Real Time Operating System?
+It is an operating system designed to serve real-time applications that process data as it arrives, with little or no buffer latency. The amount of time
+required for processing is calculated in tenths of a second increments. It is a time-bound system that has definite time limits. Processing in this type
+of system must take place within the limits that are stated. Otherwise, the system will not operate and fail. RTOS offers a priority based scheduling
+allowing the seperation of non critical processing from analytical processing. RTOS occupy very less memory and consume fewer resources.
+Ok so now that we know a little bit about OS & RTOS let's do a small comparison and see how they differ from each other
+
+                                         |
+ GENERAL PURPOSE OPERATING SYSTEM        | REAL TIME OPERATNG SYSTEM
+-----------------------------------------|-------------------------------------------------
+1) Utilized for computer based devices.  | 1) Utilized for embedded system and devices only.
+                                         |
+2) Scheduling base on process.           | 2) Scheduling based on timing.                    
+                                         |
+3) Interruprt latency isnt as vital      | 3) Interruprt latency is vital and 
+   as in RTOS.                           |    is always minimal (few microseconds).
+                                         |
+4) No Priority inversion exists.         | 4) Priority inversion is current and can not                              
+                                         |    be modifed by the system.
+-----------------------------------------|-------------------------------------------------                               
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+3-) Let's say you want about 30 hardware modules to communicate with each other. There is one STM32 microcontroller on each module, and the modules 
+can be removed and installed instantly. Which communication standard would you use for these modules to communicate effectively with each other? Why?
+
+
+The answer of this question relies on a very wide range of variables that can contribute. As it says in the question the only specifications we have
+is that it is a mutli-hardware, multi-MCU system. Do we have speed specifications? No. Do we have expandibility specifications? No. Can the system
+communication be wired or wireless? If it is a wired system do we need some bus isolations in case of error? 
+As mentioned, that is only a small partion of the possible questions or specifications that we need to determine for our needs or project. I2C, SPI,
+CAN, RS485, USART, UART, RS232 are some of the communcation protocols and each has its advantage and disadvantage in several differenct occasions or 
+situations. For example, if we are using I2C and an error shows up and one of our MCUs keeps sending data the bus will be out of service, while with
+SPI we can apply isolation, however SPI will require more wiring and complexity.
+
+For this instance, answering this question with almost no specifications will be so hard. For example, CAN protocol works great with vehicle systems
+as it allows several electronics module to communicate together. And since we don't have a clue whether the system we are working on in this case, has
+a master or no, CAN would be a good choice. However, If we have a master MCU, then I would say I2C is the best to choose for our situation, as it also 
+provides easy and simple wiring too. 
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+ZAKARIA FAKHOURI
+30/11/2022.
