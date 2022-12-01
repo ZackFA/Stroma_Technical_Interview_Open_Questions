@@ -225,18 +225,4 @@ double Filter_getAngle(Filter_t *Filter, double newAngle, double newRate, double
 
     return Filter->angle;
 };
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Stroma-Technical-Interview/easy_test.c at main · ZackFA/Stroma-Technical-Interview
+
